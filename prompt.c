@@ -3,12 +3,7 @@
 void prompt(char **str)
 {
 	size_t len = 0;
-	char *username;
 
-	username = getenv("USER");
-
-	write(1, "#", 1);
-	write(1, username, _strlen(username));
-	write(1, "$ ", 2);
+	write(1, "($) ", 4);
 	getline(str, &len, stdin);
 }

@@ -10,18 +10,16 @@
  */
 int main(int argc, char **argv, char **env)
 {
-  char *cmd;
   char **args;
-  char *str = NULL;
-  int i = 0;
+  char *str;
 
-  prompt(&str);
-  printf("%s\n", _trim(str));
-  // args = parser(str, "|");
-  // if (args != NULL)
-  // {
-  //   while (args[i] != NULL)
-  //     printf("%s\n", args[i++]);
-  // }
+  while (1)
+  {
+    str = NULL;
+    prompt(&str);
+    args = parser(_trim(str), " ");
+    if (args != NULL && args[0] != NULL)
+      execCmd(args[0], args, env);
+  }
   return (0);
 }
