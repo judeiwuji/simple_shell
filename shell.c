@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 /**
  * main - A simple shell program
@@ -12,14 +12,16 @@ int main(int argc, char **argv, char **env)
 {
   char *cmd;
   char **args;
-  char str[] = "ls -l | cp";
+  char *str = NULL;
   int i = 0;
 
-  args = parser(str, "|");
-  if (args != NULL)
-  {
-    while (args[i] != NULL)
-      printf("%s\n", args[i++]);
-  }
+  prompt(&str);
+  printf("%s\n", _trim(str));
+  // args = parser(str, "|");
+  // if (args != NULL)
+  // {
+  //   while (args[i] != NULL)
+  //     printf("%s\n", args[i++]);
+  // }
   return (0);
 }

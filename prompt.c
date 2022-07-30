@@ -1,20 +1,14 @@
 #include "shell.h"
 
-/**
-* main - prints $ to let user know the program is
-* ready to take their input
-* prints the prompt if the shell is in interactive mode
-* Return: no return
-*/
-
-
-void main(void)
+void prompt(char **str)
 {
+	size_t len = 0;
+	char *username;
 
-	if ((isatty(STDIN_FILENO) == 1) && (isatty(STDOUT_FILENO) == 1))
-		flags.interactive = 1;
+	username = getenv("USER");
 
-	if (flags.interactive)
-		write(STDERR_FILENO, "$ ", 2);
-
+	write(1, "#", 1);
+	write(1, username, _strlen(username));
+	write(1, "$ ", 2);
+	getline(str, &len, stdin);
 }

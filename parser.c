@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 /**
  * parser - Parses the input and seperate it into
