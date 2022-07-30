@@ -18,14 +18,14 @@ int execCmd(char *cmd, char **args, char **env)
 	pid = fork();
 	if (pid == -1)
 	{
-		perror("Error");
+		perror("sh");
 		return (1);
 	}
 
 	if (pid == 0)
 	{
 		if ((execve(cmd, args, env)) == -1)
-			perror("Error");
+			perror("sh");
 		exit(0);
 	}
 	else

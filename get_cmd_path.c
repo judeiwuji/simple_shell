@@ -34,15 +34,16 @@ char *getCmdPath(char *cmd)
 	{
 		size = _strlen(token) + _strlen(cmd);
 		cmdPath = malloc(sizeof(char) * size + 2);
+		if (cmdPath == NULL)
+			return (NULL);
 		cmdPath[0] = '\0';
 		_strcat(cmdPath, token, 0);
 		_strcat(cmdPath, "/", 0);
 		_strcat(cmdPath, cmd, 0);
 		if (stat(cmdPath, &st) == 0)
 			return (cmdPath);
-
 		token = strtok(NULL, ":");
+		free(cmdPath);
 	}
-	free(cmdPath);
-	return (NULL);
+	return (cmd);
 }
