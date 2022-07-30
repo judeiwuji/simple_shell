@@ -10,16 +10,16 @@
  */
 int main(int argc, char **argv, char **env)
 {
-  char **args;
-  char *str;
+	char **args;
+	char *str;
 
-  while (1)
-  {
-    str = NULL;
-    prompt(&str);
-    args = parser(_trim(str), " ");
-    if (args != NULL && args[0] != NULL)
-      execCmd(args[0], args, env);
-  }
-  return (0);
+	while (1)
+	{
+		str = NULL;
+		prompt(&str);
+		args = parser(_trim(str), " ");
+		if (args != NULL && args[0] != NULL)
+			execCmd(args[0], args, env);
+	}
+	return (0);
 }
