@@ -6,7 +6,7 @@
  *
  * Return: dest pointer
  */
-char *_strcat(char *dest, char *src, int start)
+char *_strcat(char *dest, const char *const src, int start)
 {
   int i, j;
 

@@ -10,11 +10,16 @@
  */
 int main(int argc, char **argv, char **env)
 {
-  char *cmd = "./shel";
+  char *cmd;
+  char **args;
+  char str[] = "ls -l | cp";
+  int i = 0;
 
-  while (1)
+  args = parser(str, "|");
+  if (args != NULL)
   {
+    while (args[i] != NULL)
+      printf("%s\n", args[i++]);
   }
-
   return (0);
 }
