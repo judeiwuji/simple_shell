@@ -22,6 +22,7 @@ char *_reverse_str(char *str);
 char *_trim_right(char *str);
 char *_trim_left(char *str);
 char *_trim(char *str);
+char *_strdup(char *str);
 int execCmd(char *cmd, char **args, char **env);
 char **parser(char *str, char *delim);
 char *getCmdPath(char *cmd);

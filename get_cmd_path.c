@@ -9,7 +9,7 @@
 char *getCmdPath(char *cmd)
 {
 	struct stat st;
-	char *path = getenv("PATH");
+	char *path;
 	char *token;
 	char *cmdPath = NULL;
 	int size;
@@ -26,7 +26,9 @@ char *getCmdPath(char *cmd)
 				return (NULL);
 		}
 	}
-
+	path = _strdup(getenv("PATH"));
+	if (path == NULL)
+		return (NULL);
 	token = strtok(path, ":");
 	while (token != NULL)
 	{
