@@ -12,14 +12,15 @@ int main(int argc, char **argv, char **env)
 {
 	char **args;
 	char *str;
+	int mode = 1;
 
-	while (1)
+	while (mode)
 	{
 		str = NULL;
-		prompt(&str);
+		prompt(&str, &mode);
 		args = parser(_trim(str), " ");
 		if (args != NULL && args[0] != NULL)
-			execCmd(args[0], args, env);
+			execCmd(argv[0], args[0], args, env);
 		_freeargs(args);
 	}
 	return (0);

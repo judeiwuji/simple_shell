@@ -34,7 +34,10 @@ char **parser(char *str, char *delim)
 		token = strtok(NULL, delim);
 	}
 	if (parsed[0] != NULL && delim[0] == ' ')
-		parsed[0] = getCmdPath(parsed[0]);
+	{
+		if (str[0] != '/' || (str[0] != '.' && str[1] != '/'))
+			parsed[0] = getCmdPath(parsed[0]);
+	}
 	parsed[++i] = NULL;
 	return (parsed);
 }

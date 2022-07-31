@@ -24,10 +24,10 @@ char *_trim_left(char *str);
 char *_trim(char *str);
 char *_strdup(char *str);
 void _freeargs(char **args);
-int execCmd(char *cmd, char **args, char **env);
+int execCmd(char *sh, char *cmd, char **args, char **env);
 char **parser(char *str, char *delim);
 char *getCmdPath(char *cmd);
-void prompt(char **str);
+void prompt(char **str, int *mode);
 /**
  * Struct flags - flags
  *
