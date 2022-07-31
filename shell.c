@@ -20,6 +20,7 @@ int main(int argc, char **argv, char **env)
 		args = parser(_trim(str), " ");
 		if (args != NULL && args[0] != NULL)
 			execCmd(args[0], args, env);
+		_freeargs(args);
 	}
 	return (0);
 }
