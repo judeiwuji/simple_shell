@@ -8,7 +8,7 @@
  *
  * Return: 0
  */
-int main(int argc, char **argv, char **env)
+int main(int argc __attribute__((unused)), char **argv, char **env)
 {
 	char **args;
 	char *str;

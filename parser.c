@@ -17,7 +17,7 @@ char **parser(char *str, char *delim)
 	if (str == NULL)
 		return (NULL);
 
-	parsed = malloc(sizeof(char *));
+	parsed = malloc(sizeof(char *) * 4);
 	if (parsed == NULL)
 		return (NULL);
 
