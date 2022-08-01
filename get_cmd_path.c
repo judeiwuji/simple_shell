@@ -26,7 +26,7 @@ char *getCmdPath(char *cmd)
 				return (NULL);
 		}
 	}
-	path = _strdup(getenv("PATH"));
+	path = _getenv("PATH");
 	if (path == NULL)
 		return (NULL);
 	token = _strtok(path, ':');
@@ -45,6 +45,5 @@ char *getCmdPath(char *cmd)
 		token = _strtok(NULL, ':');
 		free(cmdPath);
 	}
-	free(path);
 	return (cmd);
 }

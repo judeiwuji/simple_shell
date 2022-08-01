@@ -29,6 +29,7 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 				execCmd(argv[0], args[0], args, env);
 		}
 		_freeargs(args);
+		free(str);
 	}
 	return (0);
 }

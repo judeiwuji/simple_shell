@@ -43,4 +43,7 @@ void _env(char **env);
 void (*get_builtins(char *name))(char **);
 char *_strtok(char *str, char delim);
 int get_parsed_size(char *str, char delim);
+int _strstart(char *s1, char *s2);
+char *_getenv(char *k);
+extern char **environ;
 #endif

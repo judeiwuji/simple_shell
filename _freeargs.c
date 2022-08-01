@@ -9,6 +9,7 @@
 void _freeargs(char **args)
 {
 	int i;
+
 	if (args == NULL)
 		return;
 	for (i = 0; args[i] != NULL; i++)

@@ -16,6 +16,9 @@ int _strcmp(char *s1, char *s2)
 	res = 0;
 	i = 0;
 
+	if (s1 == NULL || s2 == NULL)
+		return (-1);
+
 	if (len1 < len2)
 		res = -1;
 	else if (len1 > len2)

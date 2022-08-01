@@ -17,7 +17,7 @@ char **parser(char *str, char delim)
 	if (str == NULL)
 		return (NULL);
 	size = get_parsed_size(str, delim);
-	parsed = malloc(sizeof(char *) * size);
+	parsed = malloc(sizeof(char *) * size + sizeof(NULL));
 	if (parsed == NULL)
 		return (NULL);
 
@@ -38,12 +38,12 @@ char **parser(char *str, char delim)
 		if (str[0] != '/' || (str[0] != '.' && str[1] != '/'))
 			parsed[0] = getCmdPath(parsed[0]);
 	}
-	parsed[++i] = NULL;
+	parsed[i] = NULL;
 	return (parsed);
 }
 
 /**
- * get_parsed_siz - Gets the size to be allocated to parsed
+ * get_parsed_size - Gets the size to be allocated to parsed
  * @str: The string to be parsed
  * @delim: the delimiter
  *
@@ -52,10 +52,10 @@ char **parser(char *str, char delim)
 int get_parsed_size(char *str, char delim)
 {
 	char *s, *token;
-	int size = 1;
+	int size = 0;
 
 	if (str == NULL)
-		return (1);
+		return (0);
 	s = _strdup(str);
 	token = _strtok(s, delim);
 	while (token != NULL)
