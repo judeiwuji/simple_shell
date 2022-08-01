@@ -23,18 +23,22 @@ char *_trim_right(char *str);
 char *_trim_left(char *str);
 char *_trim(char *str);
 char *_strdup(char *str);
+int _strcmp(char *s1, char *s2);
 void _freeargs(char **args);
 int execCmd(char *sh, char *cmd, char **args, char **env);
 char **parser(char *str, char *delim);
 char *getCmdPath(char *cmd);
 void prompt(char **str, int *mode);
 /**
- * Struct flags - flags
- *
- * @interactive: a flag
+ * Struct builtins - builtins
+ * @name: The name of this command
+ * @cmd: The command function
  */
-struct flags
+typedef struct builtins
 {
-	bool interactive;
-} flags;
+	char *name;
+	void (*cmd)(char **env);
+} builtins_t;
+void _env(char **env);
+void (*get_builtins(char *name))(char **);
 #endif
