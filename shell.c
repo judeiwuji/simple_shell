@@ -19,7 +19,7 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 	{
 		str = NULL;
 		prompt(&str, &mode);
-		args = parser(_trim(str), " ");
+		args = parser(_trim(str), ' ');
 		if (args != NULL && args[0] != NULL)
 		{
 			cmd = get_builtins(args[0]);

@@ -26,7 +26,7 @@ char *_strdup(char *str);
 int _strcmp(char *s1, char *s2);
 void _freeargs(char **args);
 int execCmd(char *sh, char *cmd, char **args, char **env);
-char **parser(char *str, char *delim);
+char **parser(char *str, char delim);
 char *getCmdPath(char *cmd);
 void prompt(char **str, int *mode);
 /**
@@ -41,4 +41,6 @@ typedef struct builtins
 } builtins_t;
 void _env(char **env);
 void (*get_builtins(char *name))(char **);
+char *_strtok(char *str, char delim);
+int get_parsed_size(char *str, char delim);
 #endif

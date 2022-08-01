@@ -8,9 +8,10 @@
  */
 void _freeargs(char **args)
 {
+	int i;
 	if (args == NULL)
 		return;
-	if (args[0] != NULL)
-		free(args[0]);
+	for (i = 0; args[i] != NULL; i++)
+		free(args[i]);
 	free(args);
 }
