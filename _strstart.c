@@ -10,18 +10,17 @@
 int _strstart(char *s1, char *s2)
 {
 	char *sub;
-	int len, len2, i;
+	int len, i;
 
 	if (s1 == NULL || s2 == NULL)
 		return (0);
 
-	len = _strlen(s1);
-	len2 = _strlen(s2);
-	sub = malloc(sizeof(char) * len2 + 1);
+	len = _strlen(s2);
+	sub = malloc(sizeof(char) * len + 1);
 	if (sub == NULL)
 		return (0);
 
-	for (i = 0; i < len2 && s1[i] != '\0'; i++)
+	for (i = 0; i < len && s1[i] != '\0'; i++)
 		sub[i] = s1[i];
 	sub[i] = '\0';
 	if (_strcmp(sub, s2) == 0)

@@ -39,11 +39,13 @@ typedef struct builtins
 	char *name;
 	void (*cmd)(char **env);
 } builtins_t;
-void _env(char **env);
+void _env(char **args __attribute__((unused)));
 void (*get_builtins(char *name))(char **);
 char *_strtok(char *str, char delim);
 int get_parsed_size(char *str, char delim);
 int _strstart(char *s1, char *s2);
 char *_getenv(char *k);
 extern char **environ;
+int argsize(char **args);
+void cd(char **args);
 #endif

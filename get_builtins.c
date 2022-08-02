@@ -10,6 +10,7 @@ void (*get_builtins(char *name))(char **)
 {
 	builtins_t cmds[] = {
 			{"env", _env},
+			{"cd", cd},
 			{NULL, NULL},
 	};
 	int i;

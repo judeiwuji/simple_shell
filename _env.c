@@ -6,16 +6,14 @@
  *
  * Return: void
  */
-void _env(char **env)
+void _env(char **args __attribute__((unused)))
 {
 	int i;
 	char *s;
 
-	if (env == NULL)
-		return;
-	for (i = 0; env[i] != NULL; i++)
+	for (i = 0; environ[i] != NULL; i++)
 	{
-		s = env[i];
+		s = environ[i];
 		write(1, s, _strlen(s));
 		write(1, "\n", 1);
 	}

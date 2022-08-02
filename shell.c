@@ -24,7 +24,7 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 		{
 			cmd = get_builtins(args[0]);
 			if (cmd != NULL)
-				cmd(env);
+				cmd(args);
 			else
 				execCmd(argv[0], args[0], args, env);
 		}
