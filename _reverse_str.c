@@ -14,7 +14,7 @@ char *_reverse_str(char *str)
 	len = _strlen(str);
 
 	if (len == 0)
-		return (reverse);
+		return (NULL);
 
 	reverse = malloc(sizeof(char) * len + 1);
 	if (reverse != NULL)

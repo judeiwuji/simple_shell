@@ -8,9 +8,8 @@
  *
  * Return: 0
  */
-int main(int argc, char **argv, char **env)
+int main(int argc __attribute__((unused)), char **argv)
 {
-	char **args;
 	char *str;
 	int mode = 1;
 
@@ -18,10 +17,11 @@ int main(int argc, char **argv, char **env)
 	{
 		str = NULL;
 		prompt(&str, &mode);
-		args = parser(_trim(str), " ");
-		if (args != NULL && args[0] != NULL)
-			execCmd(argv[0], args[0], args, env);
-		_freeargs(args);
+		if (processCmdSp(argv[0], str) == 1)
+			continue;
+		else
+			processcmd(argv[0], str);
+		free(str);
 	}
 	return (0);
 }
