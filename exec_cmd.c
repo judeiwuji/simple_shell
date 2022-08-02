@@ -26,12 +26,15 @@ int execCmd(char *sh, char *cmd, char **args, char **env)
 	if (pid == 0)
 	{
 		if ((execve(cmd, args, env)) == -1)
+		{
 			perror(sh);
+			exit(1);
+		}
 		exit(0);
 	}
 	else
 	{
-		wait(&status);
-		return (0);
+		waitpid(-1, &status, 0);
+		return (WEXITSTATUS(status));
 	}
 }

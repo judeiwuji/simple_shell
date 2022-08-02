@@ -6,7 +6,7 @@
  *
  * Return: void
  */
-void _env(char **args __attribute__((unused)))
+int _env(char **args __attribute__((unused)))
 {
 	int i;
 	char *s;
@@ -17,4 +17,5 @@ void _env(char **args __attribute__((unused)))
 		write(1, s, _strlen(s));
 		write(1, "\n", 1);
 	}
+	return (0);
 }
