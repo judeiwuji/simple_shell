@@ -50,4 +50,28 @@ int argsize(char **args);
 void cd(char **args);
 void processcmd(char *shell, char *str);
 int processCmdSp(char *shell, char *str);
+
+/*Jen's headers */
+typedef struct builtin_s
+{
+	char *name;
+	char (*f)(char **argv, char **front);
+}builtin_t;
+
+typedef struct alias_s
+{
+	char *name;
+	char *value;
+	struct alias_s *next;
+}alias_t;
+
+alias_t *aliases;
+
+void free_args(char **args, char **front);
+int shell_exit(char **args, char **front);
+void free_env(void);
+int create_error(char **args, int err);
+void free_alias_list(alias_t *head);
+int num_len(int num);
+char *_itoa(int num);
 #endif
