@@ -6,7 +6,7 @@
  *
  * Return: Built-in command or NULL
  */
-void (*get_builtins(char *name))(char **)
+int (*get_builtins(char *name))(char **)
 {
 	builtins_t cmds[] = {
 			{"env", _env},

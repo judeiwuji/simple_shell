@@ -5,19 +5,23 @@
  * @shell: The smd used to startup the shell
  * @str: User input
  */
-void processcmd(char *shell, char *str)
+int processcmd(char *shell, char *str)
 {
 	char **args;
-	void (*cmd)(char **);
+	int (*cmd)(char **);
+	int status = 0;
 
 	args = parser(_trim(str), ' ');
 	if (args != NULL && args[0] != NULL)
 	{
 		cmd = get_builtins(args[0]);
 		if (cmd != NULL)
-			cmd(args);
+			status = cmd(args);
 		else
-			execCmd(shell, args[0], args, environ);
+			status = execCmd(shell, args[0], args, environ);
+
+		printf("[%d]\n", status);
 	}
 	_freeargs(args);
+	return (status);
 }

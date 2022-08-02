@@ -4,7 +4,7 @@
  * cd - Changes directory
  * @args:
  */
-void cd(char **args)
+int cd(char **args)
 {
 	int size;
 	char *path, *arg;
@@ -12,13 +12,13 @@ void cd(char **args)
 	if (args == NULL)
 	{
 		write(1, "no arguments\n", 14);
-		return;
+		return (1);
 	}
 	size = argsize(args);
 	if (size > 2)
 	{
 		write(1, "too many arguments\n", 20);
-		return;
+		return (1);
 	}
 
 	arg = args[1];
@@ -30,5 +30,9 @@ void cd(char **args)
 		path = args[1];
 
 	if (chdir(path) < 0)
+	{
 		write(1, "No such file or directory\n", 26);
+		return (1);
+	}
+	return (0);
 }
