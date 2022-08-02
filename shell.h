@@ -48,4 +48,6 @@ char *_getenv(char *k);
 extern char **environ;
 int argsize(char **args);
 void cd(char **args);
+void processcmd(char *shell, char *str);
+int processCmdSp(char *shell, char *str);
 #endif

@@ -8,27 +8,19 @@
  *
  * Return: 0
  */
-int main(int argc __attribute__((unused)), char **argv, char **env)
+int main(int argc __attribute__((unused)), char **argv)
 {
-	char **args;
 	char *str;
-	void (*cmd)(char **);
 	int mode = 1;
 
 	while (mode)
 	{
 		str = NULL;
 		prompt(&str, &mode);
-		args = parser(_trim(str), ' ');
-		if (args != NULL && args[0] != NULL)
-		{
-			cmd = get_builtins(args[0]);
-			if (cmd != NULL)
-				cmd(args);
-			else
-				execCmd(argv[0], args[0], args, env);
-		}
-		_freeargs(args);
+		if (processCmdSp(argv[0], str) == 1)
+			continue;
+		else
+			processcmd(argv[0], str);
 		free(str);
 	}
 	return (0);
