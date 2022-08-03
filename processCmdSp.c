@@ -15,7 +15,7 @@ int processCmdSp(char *shell, char *str)
 	if (str == NULL)
 		return (0);
 
-	cmds = parser(_trim(str), ';');
+	cmds = parser(_trim(str), ";");
 	if (cmds != NULL)
 	{
 		for (i = 0; cmds[i] != NULL; i++)

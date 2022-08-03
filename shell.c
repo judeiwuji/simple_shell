@@ -4,7 +4,6 @@
  * main - A simple shell program
  * @argc: The total arguments
  * @argv: List of arguments passed to main
- * @env: List of key value environment variables
  *
  * Return: 0
  */
@@ -17,7 +16,10 @@ int main(int argc __attribute__((unused)), char **argv)
 	{
 		str = NULL;
 		prompt(&str, &mode);
-		if (processCmdSp(argv[0], str) == 1)
+
+		if (processLogical(argv[0], str) == 1)
+			continue;
+		else if (processCmdSp(argv[0], str) == 1)
 			continue;
 		else
 			processcmd(argv[0], str);

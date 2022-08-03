@@ -2,7 +2,7 @@
 
 /**
  * _env - Executes the env built command
- * @env: The enviroment list
+ * @args: The enviroment list
  *
  * Return: void
  */

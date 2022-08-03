@@ -2,7 +2,9 @@
 
 /**
  * cd - Changes directory
- * @args:
+ * @args: The arguments
+ *
+ * Return: int
  */
 int cd(char **args)
 {

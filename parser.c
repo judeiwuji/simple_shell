@@ -8,7 +8,7 @@
  *
  * Return: an array of pointers, the first is the command
  */
-char **parser(char *str, char delim)
+char **parser(char *str, char *delim)
 {
 	char *token;
 	char **parsed;
@@ -33,7 +33,7 @@ char **parser(char *str, char delim)
 		parsed[i++] = token;
 		token = _strtok(NULL, delim);
 	}
-	if (parsed[0] != NULL && delim == ' ')
+	if (parsed[0] != NULL && delim[0] == ' ')
 	{
 		if (str[0] != '/' || (str[0] != '.' && str[1] != '/'))
 			parsed[0] = getCmdPath(parsed[0]);
@@ -49,7 +49,7 @@ char **parser(char *str, char delim)
  *
  * Return: int
  */
-int get_parsed_size(char *str, char delim)
+int get_parsed_size(char *str, char *delim)
 {
 	char *s, *token;
 	int size = 0;

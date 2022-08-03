@@ -2,9 +2,9 @@
 
 /**
  * _getenv - Gets the specified environment key
+ * @k: The key to get
  *
- * @param env
- * @return char*
+ * Return: char*
  */
 char *_getenv(char *k)
 {
@@ -14,10 +14,10 @@ char *_getenv(char *k)
 	for (i = 0; environ[i] != NULL; i++)
 	{
 		env = _strdup(environ[i]);
-		token = _strtok(env, '=');
+		token = _strtok(env, "=");
 		if (token != NULL && _strcmp(token, k) == 0)
 		{
-			data = _strtok(NULL, '=');
+			data = _strtok(NULL, "=");
 			return (data);
 		}
 	}
