@@ -4,10 +4,12 @@
  * processLogical - Process logical operators
  * @shell: The cmd used to startup the shell
  * @str: The User input
+ * @e: Exit Code of last command
+ * @c: Argument count of last command
  *
  * Return: 1 on success, 0 otherwise
  */
-int processLogical(char *shell, char *str)
+int processLogical(char *shell, char *str, int *e, int *c)
 {
 	int done = 0, i = 0, pos = 0;
 	char **cmds;
@@ -28,7 +30,8 @@ int processLogical(char *shell, char *str)
 			pos += _strlen(op);
 			if (_strcmp(op, "&&") == 0 && status != 0)
 				continue;
-			status = processcmd(shell, _trim(cmds[i]));
+			status = processcmd(shell, _trim(cmds[i]), c);
+			*e = status;
 			if (_strcmp(op, "&&") == 0 && status != 0)
 				pos += _strlen(cmds[++i]);
 			if (_strcmp(op, "||") == 0 && status == 0)
