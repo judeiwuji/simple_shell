@@ -39,12 +39,18 @@ typedef struct builtins
 	char *name;
 	int (*cmd)(char **env);
 } builtins_t;
+
+typedef struct list_s
+{
+	char *dir;
+	struct list_s *next;
+} list_t;
+
 int _env(char **args __attribute__((unused)));
 int (*get_builtins(char *name))(char **);
 char *_strtok(char *str, char *delim);
 int get_parsed_size(char *str, char *delim);
 int _strstart(char *s1, char *s2);
-char *_getenv(char *k);
 extern char **environ;
 int argsize(char **args);
 int cd(char **args);
@@ -53,4 +59,5 @@ int processCmdSp(char *shell, char *str);
 int _delimcmp(char *str, char *delim);
 char *getLogicalOp(char *str, int start);
 int processLogical(char *shell, char *str);
+char *_getenv(char *k);
 #endif
