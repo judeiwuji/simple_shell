@@ -12,7 +12,8 @@ int __exit(char **args)
 
 	if (args != NULL && args[1] != NULL)
 		code = _atoi(args[1]);
-	_freeargs(args);
+
+	free(args);
 	exit(code);
 	return (1);
 }

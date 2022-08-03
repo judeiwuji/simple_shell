@@ -20,6 +20,7 @@ char *removeComment(char *str)
 		len = _strlen(stripped);
 		stripped = _realloc(stripped, len, len + 1);
 	}
+	free(str);
 	stripped[i] = '\0';
 	return (stripped);
 }
