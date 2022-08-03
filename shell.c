@@ -17,6 +17,7 @@ int main(int argc __attribute__((unused)), char **argv)
 		str = NULL;
 		prompt(&str, &mode);
 
+		str = removeComment(str);
 		if (processLogical(argv[0], str) == 1)
 			continue;
 		else if (processCmdSp(argv[0], str) == 1)

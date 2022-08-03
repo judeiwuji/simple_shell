@@ -63,4 +63,5 @@ char *_getenv(char *k);
 int __exit(char **args __attribute__((unused)));
 int _isdigit(int c);
 int _atoi(char *s);
+char *removeComment(char *str);
 #endif
