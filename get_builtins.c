@@ -11,6 +11,7 @@ int (*get_builtins(char *name))(char **)
 	builtins_t cmds[] = {
 			{"env", _env},
 			{"cd", cd},
+			{"exit", __exit},
 			{NULL, NULL},
 	};
 	int i;

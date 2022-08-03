@@ -4,7 +4,7 @@
  * _env - Executes the env built command
  * @args: The enviroment list
  *
- * Return: void
+ * Return: 0 on success
  */
 int _env(char **args __attribute__((unused)))
 {

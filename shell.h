@@ -60,4 +60,7 @@ int _delimcmp(char *str, char *delim);
 char *getLogicalOp(char *str, int start);
 int processLogical(char *shell, char *str);
 char *_getenv(char *k);
+int __exit(char **args __attribute__((unused)));
+int _isdigit(int c);
+int _atoi(char *s);
 #endif
