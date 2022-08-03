@@ -17,7 +17,7 @@ char *get_location(char *command)
 	list_t *dirs, *head;
 	struct stat st;
 
-	path = _getenv("PATH");
+	path = getenv_("PATH");
 
 	if (!path || !(*path))
 		return (NULL);
@@ -27,14 +27,14 @@ char *get_location(char *command)
 
 	while (dirs)
 	{
-		temp = malloc(_strlen(dirs->dir) + _strlen(command) + 2);
+		temp = malloc(strlen_(dirs->dir) + strlen_(command) + 2);
 
 		if (!temp)
 			return (NULL);
 
 		_strcpy(temp, dirs->dir);
-		_strcat(temp, "/");
-		_strcat(temp, command);
+		strcat_(temp, "/");
+		strcat_(temp, command);
 
 		if (stat(temp, &st) == 0)
 		{
@@ -65,14 +65,14 @@ char *fill_path_dir(char *path)
 	int i, length = 0;
 	char *path_copy, *pwd;
 
-	pwd = *(_getenv("PWD")) + 4;
+	pwd = *(getenv_("PWD")) + 4;
 
 	for (i = 0; path[i]; i++)
 	{
 		if (path[i] == ':')
 		{
 			if (path[i + 1] == ':' || i == 0 || path[i + 1] == '\0')
-				length += _strlen(pwd) + 1;
+				length += strlen_(pwd) + 1;
 			else
 				length++;
 		}
@@ -89,16 +89,16 @@ char *fill_path_dir(char *path)
 		{
 			if (i == 0)
 			{
-				_strcat(path_copy, pwd);
-				_strcat(path_copy, ":");
+				strcat_(path_copy, pwd);
+				strcat_(path_copy, ":");
 			}
 			else if (path[i + 1] == ':' || path[i + 1] == '\0')
 			{
-				_strcat(path_copy, ":");
-				_strcat(path_copy, pwd);
+				strcat_(path_copy, ":");
+				strcat_(path_copy, pwd);
 			}
 			else
-				_strcat(path_copy, ":");
+				strcat_(path_copy, ":");
 		}
 		else
 		{
@@ -126,7 +126,7 @@ list_t *get_path_dir(char *path)
 	path_copy = fill_path_dir(path);
 	if (!path_copy)
 		return (NULL);
-	dirs = _strtok(path_copy, ":");
+	dirs = strtok_(path_copy, ":");
 	free(path_copy);
 	if (!dirs)
 		return (NULL);

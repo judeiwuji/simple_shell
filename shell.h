@@ -39,12 +39,18 @@ typedef struct builtins
 	char *name;
 	int (*cmd)(char **env);
 } builtins_t;
+
+typedef struct list_s
+{
+	char *dir;
+	struct list_s *next;
+} list_t;
+
 int _env(char **args __attribute__((unused)));
 int (*get_builtins(char *name))(char **);
 char *_strtok(char *str, char delim);
 int get_parsed_size(char *str, char delim);
 int _strstart(char *s1, char *s2);
-char *_getenv(char *k);
 extern char **environ;
 int argsize(char **args);
 int cd(char **args);
@@ -52,6 +58,9 @@ int processcmd(char *shell, char *str);
 int processCmdSp(char *shell, char *str);
 
 /*Jen's headers */
+char *name; /*global program name*/
+int hist; /*global history counter*/
+
 typedef struct builtin_s
 {
 	char *name;
@@ -74,4 +83,34 @@ int create_error(char **args, int err);
 void free_alias_list(alias_t *head);
 int num_len(int num);
 char *_itoa(int num);
+int strlen_(const char *s);
+int _strncmp(const char *s1, const char *s2, size_t n);
+char *get_location(char *command);
+char *fill_path_dir(char *path);
+list_t *get_path_dir(char *path);
+list_t *add_node_end(list_t **head, char *dir);
+int token_len(char *str, char *delim);
+int count_tokens(char *str, char *delim);
+char **strtok_(char *line, char *delim);
+char *strcat_(char *dest, const char *src);
+char *_strncat(char *dest, const char *src, size_t n);
+void free_list(list_t *head);
+char **getenv_(const char *var);
+int handle_args(int *exe_ret);
+char *get_args(char *line, int *exe_ret);
+int check_args(char **args);
+int run_args(char **args, char **front, int *exe_ret);
+int call_args(char **args, char **front, int *exe_ret);
+void handle_line(char **line, ssize_t read);
+int proc_file_commands(char *file_path, int *exe_ret);
+int cant_open(char *file_path);
+void variable_replacement(char **line, int *exe_ret);
+char *get_pid(void);
+char *get_env_value(char *beginning, int len);
+ssize_t get_new_len(char *line);
+void logical_ops(char *line, ssize_t *new_len);
+int (*get_builtin(char *command))(char **args, char **front);
+void sig_handler(int sig);
+int execute(char **args, char **front);
+char **_copyenv(void);
 #endif
