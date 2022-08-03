@@ -10,7 +10,7 @@
 int _strstart(char *s1, char *s2)
 {
 	char *sub;
-	int len, i;
+	int len, i, match = 0;
 
 	if (s1 == NULL || s2 == NULL)
 		return (0);
@@ -24,7 +24,7 @@ int _strstart(char *s1, char *s2)
 		sub[i] = s1[i];
 	sub[i] = '\0';
 	if (_strcmp(sub, s2) == 0)
-		return (1);
+		match = 1;
 	free(sub);
-	return (0);
+	return (match);
 }

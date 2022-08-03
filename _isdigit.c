@@ -7,15 +7,15 @@
 
 int _isdigit(int c)
 {
-  int res, zero, max;
+	int res, zero, max;
 
-  zero = 48;
-  max = zero + 9;
+	zero = 48;
+	max = zero + 9;
 
-  if (c >= zero && c <= max)
-    res = 1;
-  else
-    res = 0;
+	if (c >= zero && c <= max)
+		res = 1;
+	else
+		res = 0;
 
-  return (res);
+	return (res);
 }

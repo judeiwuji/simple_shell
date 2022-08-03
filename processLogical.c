@@ -35,6 +35,7 @@ int processLogical(char *shell, char *str)
 				pos += _strlen(cmds[++i]) + 2;
 		}
 	}
+	_freeargs(cmds);
 	return (done);
 }
 

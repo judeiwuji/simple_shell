@@ -8,8 +8,11 @@
  */
 int __exit(char **args)
 {
-  if (args != NULL && args[1] != NULL)
-    exit(_atoi(args[1]));
-  exit(0);
-  return (1);
+	int code = 0;
+
+	if (args != NULL && args[1] != NULL)
+		code = _atoi(args[1]);
+	_freeargs(args);
+	exit(code);
+	return (1);
 }

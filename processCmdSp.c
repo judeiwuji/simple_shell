@@ -16,13 +16,12 @@ int processCmdSp(char *shell, char *str)
 		return (0);
 
 	cmds = parser(_trim(str), ";");
-	if (cmds != NULL)
+	if (cmds != NULL && cmds[1] != NULL)
 	{
+		done = 1;
 		for (i = 0; cmds[i] != NULL; i++)
 			processcmd(shell, _trim(cmds[i]));
 	}
-	if (i > 0)
-		done = 1;
-
+	_freeargs(cmds);
 	return (done);
 }
