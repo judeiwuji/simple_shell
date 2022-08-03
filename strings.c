@@ -115,6 +115,7 @@ char **strtok_(char *line, char *delim)
 
 	char **ptr;
 	int index = 0, tokens, t, letters, l;
+
 	tokens = count_tokens(line, delim);
 
 	if (tokens == 0)
