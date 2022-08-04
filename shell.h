@@ -64,4 +64,20 @@ int __exit(char **args __attribute__((unused)));
 int _isdigit(int c);
 int _atoi(char *s);
 char *removeComment(char *str);
+char *_itoa(int num);
+int num_len(int num);
+/**
+ * Struct shell_var - shell_var
+ * @code: The exit code of last command
+ * @argc: The argument count of last command
+ * @pid: The shell process id
+ */
+typedef struct shell_var
+{
+	int code;
+	int argc;
+	pid_t pid;
+} shell_var_t;
+char *replace_var(char *s, shell_var_t svar);
+char *getVar(char *key, shell_var_t svar);
 #endif

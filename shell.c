@@ -11,24 +11,23 @@ int main(int argc __attribute__((unused)), char **argv)
 {
 	char *str;
 	int mode = 1;
-	int exitCode = 0;
-	int argCount = 0;
-	pid_t pid __attribute__((unused));
+	shell_var_t var = {0, 0, 0};
 
-	pid = getpid();
+	var.pid = getpid();
 	while (mode)
 	{
 		str = NULL;
 		prompt(&str, &mode);
-
-		str = removeComment(str);
-		if (processLogical(argv[0], str, &exitCode, &argCount) == 1)
+		str = replace_var(_trim(str), var);
+		str = removeComment(_trim(str));
+		if (processLogical(argv[0], str, &var.code, &var.argc) == 1)
 			continue;
-		else if (processCmdSp(argv[0], str, &exitCode, &argCount) == 1)
+		else if (processCmdSp(argv[0], str, &var.code, &var.argc) == 1)
 			continue;
 		else
-			exitCode = processcmd(argv[0], str, &argCount);
-		free(str);
+			var.code = processcmd(argv[0], str, &var.argc);
+		if (str)
+			free(str);
 	}
 	return (0);
 }
