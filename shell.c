@@ -7,7 +7,7 @@
  *
  * Return: 0
  */
-int main(int argc __attribute__((unused)), char **argv)
+int main(int argc, char **argv)
 {
 	char *str;
 	int mode = 1;
@@ -17,7 +17,14 @@ int main(int argc __attribute__((unused)), char **argv)
 	while (mode)
 	{
 		str = NULL;
-		prompt(&str, &mode);
+		if (argc > 1)
+		{
+			if (processFile(argv[1], &str) == 0)
+				exit(0);
+		}
+		else
+			prompt(&str, &mode);
+
 		str = replace_var(_trim(str), var);
 		str = removeComment(_trim(str));
 		if (processLogical(argv[0], str, &var.code, &var.argc) == 1)

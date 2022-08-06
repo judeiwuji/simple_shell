@@ -80,4 +80,5 @@ typedef struct shell_var
 } shell_var_t;
 char *replace_var(char *s, shell_var_t svar);
 char *getVar(char *key, shell_var_t svar);
+int processFile(char *filename, char **str);
 #endif

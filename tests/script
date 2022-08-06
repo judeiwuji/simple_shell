@@ -1,0 +1,9 @@
+ls -l
+echo $USER
+echo $HOME
+echo $PATH
+echo $PWD
+mkdir test_script
+rmdir test_script
+touch test.txt
+rm test.txt
