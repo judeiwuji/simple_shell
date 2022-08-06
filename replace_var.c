@@ -7,7 +7,7 @@
  *
  * Return: char *
  */
-char *replace_var(char *s, shell_var_t svar)
+char *replace_var(char *s, shell_var_t *svar)
 {
 	char *str = NULL, *key, *var;
 	int i, j, m, len, len2;
@@ -35,7 +35,7 @@ char *replace_var(char *s, shell_var_t svar)
 			{
 				len = _strlen(str);
 				len2 = _strlen(var);
-				str = _realloc(str, len, len + len2 + 2);
+				str = _realloc(str, len, len + len2 + 1);
 				str = _strcat(str, var, 0);
 				str = _strcat(str, " ", 0);
 				j = _strlen(str) - 1;
@@ -56,16 +56,16 @@ char *replace_var(char *s, shell_var_t svar)
  * @svar: shell variables
  * Return: char*
  */
-char *getVar(char *key, shell_var_t svar)
+char *getVar(char *key, shell_var_t *svar)
 {
 	char *var = NULL;
 
 	if (_strcmp(key, "?") == 0)
-		var = _itoa(svar.code);
+		var = _itoa(svar->code);
 	else if (_strcmp(key, "#") == 0)
-		var = _itoa(svar.argc);
+		var = _itoa(svar->argc);
 	else if (_strcmp(key, "$") == 0)
-		var = _itoa((int)svar.pid);
+		var = _itoa((int)svar->pid);
 	else
 		var = _getenv(key);
 	return (var);

@@ -25,14 +25,13 @@ int main(int argc, char **argv)
 		else
 			prompt(&str, &mode);
 
-		str = replace_var(_trim(str), var);
 		str = removeComment(_trim(str));
-		if (processLogical(argv[0], str, &var.code, &var.argc) == 1)
+		if (processLogical(argv[0], str, &var) == 1)
 			continue;
-		else if (processCmdSp(argv[0], str, &var.code, &var.argc) == 1)
+		else if (processCmdSp(argv[0], str, &var) == 1)
 			continue;
 		else
-			var.code = processcmd(argv[0], str, &var.argc);
+			var.code = processcmd(argv[0], str, &var);
 		if (str)
 			free(str);
 	}

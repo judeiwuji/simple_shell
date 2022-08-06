@@ -4,12 +4,11 @@
  * processCmdSp - Process Cmd separator
  * @shell: The smd used to startup the shell
  * @str: The User input
- * @e: Exit Code of last command
- * @c: Argument count of last command
+ * @var: Shell variable
  *
  * Return: 1 on success, 0 otherwise
  */
-int processCmdSp(char *shell, char *str, int *e, int *c)
+int processCmdSp(char *shell, char *str, shell_var_t *var)
 {
 	int done = 0, i = 0;
 	char **cmds;
@@ -22,7 +21,7 @@ int processCmdSp(char *shell, char *str, int *e, int *c)
 	{
 		done = 1;
 		for (i = 0; cmds[i] != NULL; i++)
-			*e = processcmd(shell, _trim(cmds[i]), c);
+			processcmd(shell, _trim(cmds[i]), var);
 	}
 	_freeargs(cmds);
 	return (done);
