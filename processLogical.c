@@ -35,6 +35,7 @@ int processLogical(char *shell, char *str, shell_var_t *var)
 				pos += _strlen(cmds[++i]);
 			if (_strcmp(op, "||") == 0 && status == 0)
 				pos += _strlen(cmds[++i]) + 2;
+			free(op);
 		}
 	}
 	_freeargs(cmds);

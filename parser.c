@@ -10,7 +10,7 @@
  */
 char **parser(char *str, char *delim)
 {
-	char *token;
+	char *token, *s, *temp;
 	char **parsed;
 	int i = 0, size;
 
@@ -20,8 +20,8 @@ char **parser(char *str, char *delim)
 	parsed = malloc(sizeof(char *) * size + sizeof(NULL));
 	if (parsed == NULL)
 		return (NULL);
-
-	token = _strtok(str, delim);
+	s = _strdup(str);
+	token = _strtok(s, delim);
 	while (token != NULL)
 	{
 		parsed[i] = malloc(sizeof(char) * _strlen(token));
@@ -35,10 +35,16 @@ char **parser(char *str, char *delim)
 	}
 	if (parsed[0] != NULL && delim[0] == ' ')
 	{
-		if (str[0] != '/' || (str[0] != '.' && str[1] != '/'))
-			parsed[0] = getCmdPath(parsed[0]);
+		if (!_strstart(str, "/") && !_strstart(str, "./"))
+		{
+			temp = getCmdPath(parsed[0]);
+			if (_strcmp(temp, parsed[0]) != 0)
+				free(parsed[0]);
+			parsed[0] = temp;
+		}
 	}
 	parsed[i] = NULL;
+	free(s);
 	return (parsed);
 }
 
@@ -61,6 +67,7 @@ int get_parsed_size(char *str, char *delim)
 	while (token != NULL)
 	{
 		size++;
+		free(token);
 		token = _strtok(NULL, delim);
 	}
 	free(s);

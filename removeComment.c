@@ -16,11 +16,10 @@ char *removeComment(char *str)
 	stripped = _realloc(stripped, 0, 2);
 	for (i = 0; str[i] != '\0' && str[i] != '#'; i++)
 	{
+		len = i + 1;
 		stripped[i] = str[i];
-		len = _strlen(stripped);
+		stripped[len] = '\0';
 		stripped = _realloc(stripped, len, len + 1);
 	}
-	free(str);
-	stripped[i] = '\0';
 	return (stripped);
 }

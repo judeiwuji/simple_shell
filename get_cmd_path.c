@@ -42,8 +42,9 @@ char *getCmdPath(char *cmd)
 		_strcat(cmdPath, cmd, 0);
 		if (stat(cmdPath, &st) == 0)
 			return (cmdPath);
-		token = _strtok(NULL, ":");
+		free(token);
 		free(cmdPath);
+		token = _strtok(NULL, ":");
 	}
 
 	return (cmd);

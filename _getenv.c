@@ -18,9 +18,13 @@ char *_getenv(char *k)
 		if (token != NULL && _strcmp(token, k) == 0)
 		{
 			data = _strtok(NULL, "=");
+			if (token)
+				free(token);
 			free(env);
 			return (data);
 		}
+		if (token)
+			free(token);
 		free(env);
 	}
 	return (NULL);

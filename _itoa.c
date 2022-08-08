@@ -41,6 +41,7 @@ char *_itoa(int num)
 {
 	char *buffer;
 	int len = num_len(num);
+	int i = 1;
 	unsigned int num1;
 
 	buffer = malloc(sizeof(char) * (len + 1));
@@ -55,17 +56,14 @@ char *_itoa(int num)
 		buffer[0] = '-';
 	}
 	else
-	{
 		num1 = num;
-	}
-
 	len--;
-	do
-	{
+	do {
 		buffer[len] = (num1 % 10) + '0';
 		num1 /= 10;
 		len--;
+		i++;
 	} while (num1 > 0);
-
+	buffer[i] = '\0';
 	return (buffer);
 }

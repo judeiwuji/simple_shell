@@ -33,7 +33,6 @@ char *_trim_left(char *str)
 			}
 		}
 	}
-
 	return (trimmed);
 }
 
@@ -46,10 +45,11 @@ char *_trim_left(char *str)
  */
 char *_trim_right(char *str)
 {
-	char *trimmed;
+	char *trimmed, *temp;
 
-	trimmed = _trim_left(_reverse_str(str));
-	trimmed = _reverse_str(trimmed);
+	temp = _trim_left(_reverse_str(str));
+	trimmed = _reverse_str(temp);
+	free(temp);
 	return (trimmed);
 }
 
@@ -62,9 +62,10 @@ char *_trim_right(char *str)
  */
 char *_trim(char *str)
 {
-	char *trimmed;
+	char *trimmed, *temp;
 
-	trimmed = _trim_left(str);
-	trimmed = _trim_right(trimmed);
+	temp = _trim_left(str);
+	trimmed = _trim_right(temp);
+	free(temp);
 	return (trimmed);
 }

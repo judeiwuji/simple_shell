@@ -10,11 +10,13 @@
  */
 int processcmd(char *shell, char *str, shell_var_t *var)
 {
-	char **args;
+	char **args, *s;
 	int (*cmd)(char **);
 
-	str = replace_var(_trim(str), var);
-	args = parser(_trim(str), " ");
+	s = replace_var(_trim(str), var);
+	free(str);
+	args = parser(_trim(s), " ");
+	free(s);
 	if (args != NULL && args[0] != NULL)
 	{
 		cmd = get_builtins(args[0]);
