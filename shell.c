@@ -9,7 +9,7 @@
  */
 int main(int argc, char **argv)
 {
-	char *str, *temp;
+	char *str, *nocomments, *trimmed;
 	int mode = 1;
 	shell_var_t var = {0, 0, 0};
 
@@ -25,15 +25,17 @@ int main(int argc, char **argv)
 		else
 			prompt(&str, &mode);
 
-		temp = removeComment(_trim(str));
+		trimmed = _trim(str);
+		nocomments = removeComment(trimmed);
 		free(str);
-		str = temp;
+		free(trimmed);
+		str = nocomments;
 		if (processLogical(argv[0], str, &var) == 1)
 			continue;
 		else if (processCmdSp(argv[0], str, &var) == 1)
 			continue;
 		else
-			var.code = processcmd(argv[0], str, &var);
+			processcmd(argv[0], str, &var);
 	}
 	return (0);
 }

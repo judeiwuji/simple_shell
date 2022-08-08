@@ -27,7 +27,7 @@ char **parser(char *str, char *delim)
 		parsed[i] = malloc(sizeof(char) * _strlen(token));
 		if (parsed[i] == NULL)
 		{
-			free(parsed);
+			_freeargs(parsed);
 			return (NULL);
 		}
 		parsed[i++] = token;

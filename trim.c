@@ -46,10 +46,13 @@ char *_trim_left(char *str)
 char *_trim_right(char *str)
 {
 	char *trimmed, *temp;
+	char *reversed;
 
-	temp = _trim_left(_reverse_str(str));
+	reversed = _reverse_str(str);
+	temp = _trim_left(reversed);
 	trimmed = _reverse_str(temp);
 	free(temp);
+	free(reversed);
 	return (trimmed);
 }
 

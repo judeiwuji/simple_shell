@@ -12,13 +12,15 @@ int processLogical(char *shell, char *str, shell_var_t *var)
 {
 	int done = 0, i = 0, pos = 0;
 	char **cmds;
-	char *op;
+	char *op, *trimmed;
 	int status = 0;
 
 	if (str == NULL)
 		return (0);
 
-	cmds = parser(_trim(str), "&&||");
+	trimmed = _trim(str);
+	cmds = parser(trimmed, "&&||");
+	free(trimmed);
 	if (cmds != NULL && cmds[1] != NULL)
 	{
 		done = 1;
@@ -29,7 +31,8 @@ int processLogical(char *shell, char *str, shell_var_t *var)
 			pos += _strlen(op);
 			if (_strcmp(op, "&&") == 0 && status != 0)
 				continue;
-			status = processcmd(shell, _trim(cmds[i]), var);
+			trimmed = _trim(cmds[i]);
+			status = processcmd(shell, trimmed, var);
 			var->code = status;
 			if (_strcmp(op, "&&") == 0 && status != 0)
 				pos += _strlen(cmds[++i]);
@@ -37,6 +40,7 @@ int processLogical(char *shell, char *str, shell_var_t *var)
 				pos += _strlen(cmds[++i]) + 2;
 			free(op);
 		}
+		free(str);
 	}
 	_freeargs(cmds);
 	return (done);

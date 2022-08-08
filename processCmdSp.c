@@ -12,16 +12,23 @@ int processCmdSp(char *shell, char *str, shell_var_t *var)
 {
 	int done = 0, i = 0;
 	char **cmds;
+	char *trimmed;
 
 	if (str == NULL)
 		return (0);
 
-	cmds = parser(_trim(str), ";");
+	trimmed = _trim(str);
+	cmds = parser(trimmed, ";");
+	free(trimmed);
 	if (cmds != NULL && cmds[1] != NULL)
 	{
 		done = 1;
 		for (i = 0; cmds[i] != NULL; i++)
-			processcmd(shell, _trim(cmds[i]), var);
+		{
+			trimmed = _trim(cmds[i]);
+			processcmd(shell, trimmed, var);
+		}
+		free(str);
 	}
 	_freeargs(cmds);
 	return (done);
