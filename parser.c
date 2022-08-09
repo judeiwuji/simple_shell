@@ -39,8 +39,10 @@ char **parser(char *str, char *delim)
 		{
 			temp = getCmdPath(parsed[0]);
 			if (_strcmp(temp, parsed[0]) != 0)
+			{
 				free(parsed[0]);
-			parsed[0] = temp;
+				parsed[0] = temp;
+			}
 		}
 	}
 	parsed[i] = NULL;
