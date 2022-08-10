@@ -19,7 +19,7 @@ char *removeComment(char *str)
 		len = i + 1;
 		stripped[i] = str[i];
 		stripped[len] = '\0';
-		stripped = _realloc(stripped, len, len + 1);
+		stripped = _realloc(stripped, len, len + 2);
 	}
 	return (stripped);
 }

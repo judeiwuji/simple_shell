@@ -45,7 +45,7 @@ char *replace_var(char *s, shell_var_t *svar)
 		}
 		str[j++] = s[i];
 		str[j] = '\0';
-		str = _realloc(str, _strlen(str), _strlen(str) + 1);
+		str = _realloc(str, _strlen(str), _strlen(str) + 2);
 	}
 	return (str);
 }
