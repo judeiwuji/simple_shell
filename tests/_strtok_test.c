@@ -5,11 +5,11 @@ int main(int argc, char **argv)
   char str[] = "ls && ls -l /tmp || echo && mkdir test && cd /tmp";
   char *token;
 
-  token = _strtok(str, "||&&");
+  token = _tokenize(str, "||&&");
   while (token != NULL)
   {
     printf("%s\n", _trim(token));
-    token = _strtok(NULL, "||&&");
+    token = _tokenize(NULL, "||&&");
   }
 }
 

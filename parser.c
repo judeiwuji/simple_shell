@@ -21,11 +21,11 @@ char **parser(char *str, char *delim)
 	if (parsed == NULL)
 		return (NULL);
 	s = _strdup(str);
-	token = _strtok(s, delim);
+	token = _tokenize(s, delim);
 	while (token != NULL)
 	{
 		parsed[i++] = token;
-		token = _strtok(NULL, delim);
+		token = _tokenize(NULL, delim);
 	}
 	if (parsed[0] != NULL && delim[0] == ' ')
 	{
@@ -59,12 +59,12 @@ int get_parsed_size(char *str, char *delim)
 	if (str == NULL)
 		return (0);
 	s = _strdup(str);
-	token = _strtok(s, delim);
+	token = _tokenize(s, delim);
 	while (token != NULL)
 	{
 		size++;
 		free(token);
-		token = _strtok(NULL, delim);
+		token = _tokenize(NULL, delim);
 	}
 	free(s);
 	return (size);

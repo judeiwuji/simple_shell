@@ -17,7 +17,7 @@ char *getCmdPath(char *cmd)
 	path = _getenv("PATH");
 	if (path == NULL)
 		return (NULL);
-	token = _strtok(path, ":");
+	token = _tokenize(path, ":");
 	while (token != NULL)
 	{
 		size = _strlen(token) + _strlen(cmd);
@@ -35,7 +35,7 @@ char *getCmdPath(char *cmd)
 			return (cmdPath);
 		}
 		free(cmdPath);
-		token = _strtok(NULL, ":");
+		token = _tokenize(NULL, ":");
 	}
 	free(path);
 	return (cmd);

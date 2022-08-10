@@ -62,7 +62,7 @@ typedef struct list_s
 
 int _env(char **args __attribute__((unused)));
 int (*get_builtins(char *name))(char **);
-char *_strtok(char *str, char *delim);
+char *_tokenize(char *str, char *delim);
 int get_parsed_size(char *str, char *delim);
 int _strstart(char *s1, char *s2);
 extern char **environ;

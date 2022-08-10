@@ -1,13 +1,13 @@
 #include "shell.h"
 
 /**
- * _strtok - Tokenizes a string using a given delim
+ * _tokenize - Tokenizes a string using a given delim
  * @str: The string
  * @delim: The Delimiter
  *
  * Return: char*
  */
-char *_strtok(char *str, char *delim)
+char *_tokenize(char *str, char *delim)
 {
 	static char *data;
 	char *res = NULL;

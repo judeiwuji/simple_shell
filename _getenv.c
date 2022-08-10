@@ -14,10 +14,10 @@ char *_getenv(char *k)
 	for (i = 0; environ[i] != NULL; i++)
 	{
 		env = _strdup(environ[i]);
-		token = _strtok(env, "=");
+		token = _tokenize(env, "=");
 		if (token != NULL && _strcmp(token, k) == 0)
 		{
-			data = _strtok(NULL, "=");
+			data = _tokenize(NULL, "=");
 			if (token)
 				free(token);
 			free(env);
