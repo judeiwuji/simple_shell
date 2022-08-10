@@ -24,12 +24,6 @@ char **parser(char *str, char *delim)
 	token = _strtok(s, delim);
 	while (token != NULL)
 	{
-		parsed[i] = malloc(sizeof(char) * _strlen(token));
-		if (parsed[i] == NULL)
-		{
-			_freeargs(parsed);
-			return (NULL);
-		}
 		parsed[i++] = token;
 		token = _strtok(NULL, delim);
 	}
