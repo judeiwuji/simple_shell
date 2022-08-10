@@ -22,12 +22,18 @@ char *_tokenize(char *str, char *delim)
 	while (data[0] != '\0')
 	{
 		moves = _delimcmp(data, delim);
+		len = _strlen(res);
 		if (moves != -1)
 		{
 			data = (data + moves);
+			if (data && res == NULL)
+			{
+				res = _realloc(res, len, len + 2);
+				res[i++] = ' ';
+				res[i] = '\0';
+			}
 			break;
 		}
-		len = _strlen(res);
 		res = _realloc(res, len, len + 2);
 		res[i++] = data[0];
 		res[i] = '\0';

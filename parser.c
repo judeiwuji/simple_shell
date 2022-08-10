@@ -24,7 +24,8 @@ char **parser(char *str, char *delim)
 	token = _tokenize(s, delim);
 	while (token != NULL)
 	{
-		parsed[i++] = token;
+		if (_strcmp(token, " ") != 0)
+			parsed[i++] = token;
 		token = _tokenize(NULL, delim);
 	}
 	if (parsed[0] != NULL && delim[0] == ' ')
