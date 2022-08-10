@@ -43,5 +43,5 @@ int main(int argc, char **argv, char **env)
 		else
 			processcmd(str, &var);
 	}
-	return (0);
+	return (var.code);
 }

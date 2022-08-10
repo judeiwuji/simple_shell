@@ -14,8 +14,8 @@ size_t prompt(char **str, int *mode)
 
 	if (!isatty(STDIN_FILENO))
 		*mode = 0;
-
-	write(1, "$ ", 2);
+	else
+		write(1, "$ ", 2);
 	status = getline(str, &len, stdin);
 	return (status);
 }
