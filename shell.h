@@ -16,7 +16,7 @@
 #define EXIT -3
 
 /**
- * Struct shell_var - shell_var
+ * struct shell_var - Struct shell_var
  * @code: The exit code of last command
  * @argc: The argument count of last command
  * @pid: The shell process id
@@ -44,7 +44,7 @@ char **parser(char *str, char *delim);
 char *getCmdPath(char *cmd);
 size_t prompt(char **str, int *mode);
 /**
- * Struct builtins - builtins
+ * struct builtins - Struct builtins
  * @name: The name of this command
  * @cmd: The command function
  */
@@ -53,12 +53,6 @@ typedef struct builtins
 	char *name;
 	int (*cmd)(char **env);
 } builtins_t;
-
-typedef struct list_s
-{
-	char *dir;
-	struct list_s *next;
-} list_t;
 
 int _env(char **args __attribute__((unused)));
 int (*get_builtins(char *name))(char **);
