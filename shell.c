@@ -4,16 +4,19 @@
  * main - A simple shell program
  * @argc: The total arguments
  * @argv: List of arguments passed to main
+ * @env: Argument list
  *
  * Return: 0
  */
-int main(int argc, char **argv)
+int main(int argc, char **argv, char **env)
 {
 	char *str, *nocomments, *trimmed;
 	int mode = 1;
-	shell_var_t var = {0, 0, 0};
+	shell_var_t var = {0, 0, 0, NULL, NULL};
 
 	var.pid = getpid();
+	var.env = env;
+	var.name = argv[0];
 	while (mode)
 	{
 		str = NULL;
@@ -33,12 +36,12 @@ int main(int argc, char **argv)
 		free(str);
 		free(trimmed);
 		str = nocomments;
-		if (processLogical(argv[0], str, &var) == 1)
+		if (processLogical(str, &var) == 1)
 			continue;
-		else if (processCmdSp(argv[0], str, &var) == 1)
+		else if (processCmdSp(str, &var) == 1)
 			continue;
 		else
-			processcmd(argv[0], str, &var);
+			processcmd(str, &var);
 	}
 	return (0);
 }

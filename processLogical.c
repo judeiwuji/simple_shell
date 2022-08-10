@@ -2,13 +2,12 @@
 
 /**
  * processLogical - Process logical operators
- * @shell: The cmd used to startup the shell
  * @str: The User input
  * @var: Shell variables
  *
  * Return: 1 on success, 0 otherwise
  */
-int processLogical(char *shell, char *str, shell_var_t *var)
+int processLogical(char *str, shell_var_t *var)
 {
 	int done = 0, i = 0, pos = 0;
 	char **cmds;
@@ -32,7 +31,7 @@ int processLogical(char *shell, char *str, shell_var_t *var)
 			if (_strcmp(op, "&&") == 0 && status != 0)
 				continue;
 			trimmed = _trim(cmds[i]);
-			status = processcmd(shell, trimmed, var);
+			status = processcmd(trimmed, var);
 			var->code = status;
 			if (_strcmp(op, "&&") == 0 && status != 0)
 				pos += _strlen(cmds[++i]);

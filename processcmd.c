@@ -2,13 +2,12 @@
 
 /**
  * processcmd - Parse user input into command
- * @shell: The smd used to startup the shell
  * @str: User input
  * @var: shell variables
  *
  * Return: int
  */
-int processcmd(char *shell, char *str, shell_var_t *var)
+int processcmd(char *str, shell_var_t *var)
 {
 	char **args, *s, *trimmed;
 	int (*cmd)(char **);
@@ -28,7 +27,7 @@ int processcmd(char *shell, char *str, shell_var_t *var)
 		if (cmd != NULL)
 			var->code = cmd(args);
 		else
-			var->code = execCmd(shell, args[0], args);
+			var->code = execCmd(var->name, args[0], args);
 	}
 	_freeargs(args);
 	return (var->code);

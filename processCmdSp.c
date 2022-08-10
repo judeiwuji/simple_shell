@@ -2,13 +2,12 @@
 
 /**
  * processCmdSp - Process Cmd separator
- * @shell: The smd used to startup the shell
  * @str: The User input
  * @var: Shell variable
  *
  * Return: 1 on success, 0 otherwise
  */
-int processCmdSp(char *shell, char *str, shell_var_t *var)
+int processCmdSp(char *str, shell_var_t *var)
 {
 	int done = 0, i = 0;
 	char **cmds;
@@ -26,7 +25,7 @@ int processCmdSp(char *shell, char *str, shell_var_t *var)
 		for (i = 0; cmds[i] != NULL; i++)
 		{
 			trimmed = _trim(cmds[i]);
-			processcmd(shell, trimmed, var);
+			processcmd(trimmed, var);
 		}
 		free(str);
 	}
