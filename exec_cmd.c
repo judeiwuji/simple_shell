@@ -7,11 +7,10 @@
  * full path to this command
  * @args: List of arguments for this cmd, the first
  * item in this list must be the command to be executed
- * @env: The environment to be used to exec this cmd
  *
  * Return: 0 on success, 1 otherwise
  */
-int execCmd(char *sh, char *cmd, char **args, char **env)
+int execCmd(char *sh, char *cmd, char **args)
 {
 	pid_t pid;
 	int status;
@@ -25,7 +24,7 @@ int execCmd(char *sh, char *cmd, char **args, char **env)
 
 	if (pid == 0)
 	{
-		if ((execve(cmd, args, env)) == -1)
+		if ((execve(cmd, args, environ)) == -1)
 		{
 			perror(sh);
 			exit(1);

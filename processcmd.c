@@ -28,7 +28,7 @@ int processcmd(char *shell, char *str, shell_var_t *var)
 		if (cmd != NULL)
 			var->code = cmd(args);
 		else
-			var->code = execCmd(shell, args[0], args, environ);
+			var->code = execCmd(shell, args[0], args);
 	}
 	_freeargs(args);
 	return (var->code);

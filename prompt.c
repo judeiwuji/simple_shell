@@ -7,13 +7,15 @@
  *
  * Return: void
  */
-void prompt(char **str, int *mode)
+size_t prompt(char **str, int *mode)
 {
 	size_t len = 0;
+	size_t status;
 
 	if (!isatty(fileno(stdin)))
 		*mode = 0;
 
 	write(1, "($) ", 4);
-	getline(str, &len, stdin);
+	status = getline(str, &len, stdin);
+	return (status);
 }

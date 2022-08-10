@@ -39,10 +39,10 @@ char *_trim(char *str);
 char *_strdup(char *str);
 int _strcmp(char *s1, char *s2);
 void _freeargs(char **args);
-int execCmd(char *sh, char *cmd, char **args, char **env);
+int execCmd(char *sh, char *cmd, char **args);
 char **parser(char *str, char *delim);
 char *getCmdPath(char *cmd);
-void prompt(char **str, int *mode);
+size_t prompt(char **str, int *mode);
 /**
  * Struct builtins - builtins
  * @name: The name of this command

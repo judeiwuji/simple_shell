@@ -23,7 +23,10 @@ int main(int argc, char **argv)
 				exit(0);
 		}
 		else
-			prompt(&str, &mode);
+		{
+			if ((int)prompt(&str, &mode) == -1)
+				exit(0);
+		}
 
 		trimmed = _trim(str);
 		nocomments = removeComment(trimmed);
