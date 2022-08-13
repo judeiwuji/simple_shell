@@ -23,7 +23,7 @@ int main(int argc, char **argv, char **env)
 		if (argc > 1)
 		{
 			if (processFile(argv[1], &str) == 0)
-				exit(0);
+				exit(var.code);
 		}
 		else
 		{
