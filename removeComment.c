@@ -11,7 +11,7 @@ char *removeComment(char *str)
 	char *stripped = NULL;
 	int i = 0, len;
 	int hasQoute = 0;
-	char c, prev_c =' ';
+	char c, prev_c = ' ';
 	char quote;
 
 	if (str == NULL)
