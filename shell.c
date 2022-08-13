@@ -28,7 +28,7 @@ int main(int argc, char **argv, char **env)
 		else
 		{
 			if ((int)prompt(&str, &mode) == -1)
-				exit(0);
+				exit(var.code);
 		}
 
 		trimmed = _trim(str);
