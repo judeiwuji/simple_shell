@@ -9,21 +9,23 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <signal.h>
+#include <errno.h>
+#include <stdbool.h>
+#define END_OF_FILE -2
+#define EXIT -3
+
 /**
  * struct shell_var - Struct shell_var
  * @code: The exit code of last command
  * @argc: The argument count of last command
  * @pid: The shell process id
- * @env: The environment varibles
- * @name: The name of this shell
  */
 typedef struct shell_var
 {
 	int code;
 	int argc;
 	pid_t pid;
-	char **env;
-	char *name;
 } shell_var_t;
 
 int _strlen(char *str);
@@ -49,7 +51,7 @@ size_t prompt(char **str, int *mode);
 typedef struct builtins
 {
 	char *name;
-	int (*cmd)(char **args);
+	int (*cmd)(char **env);
 } builtins_t;
 
 int _env(char **args __attribute__((unused)));
@@ -60,11 +62,11 @@ int _strstart(char *s1, char *s2);
 extern char **environ;
 int argsize(char **args);
 int cd(char **args);
-int processcmd(char *str, shell_var_t *var);
-int processCmdSp(char *str, shell_var_t *var);
+int processcmd(char *shell, char *str, shell_var_t *var);
+int processCmdSp(char *shell, char *str, shell_var_t *var);
 int _delimcmp(char *str, char *delim);
 char *getLogicalOp(char *str, int start);
-int processLogical(char *str, shell_var_t *var);
+int processLogical(char *shell, char *str, shell_var_t *var);
 char *_getenv(char *k);
 int __exit(char **args __attribute__((unused)));
 int _isdigit(int c);
