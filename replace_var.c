@@ -9,7 +9,7 @@
  */
 char *replace_var(char *s, shell_var_t *svar)
 {
-	char *str = NULL, *key, *var, c;
+	char *str = NULL, *key, *var;
 	int i, j, m, len, len2;
 
 	if (s == NULL)
@@ -17,10 +17,10 @@ char *replace_var(char *s, shell_var_t *svar)
 	str = _realloc(str, 0, 2);
 	for (i = 0, j = 0; s[i] != '\0'; i++)
 	{
-		c = s[i + 1];
-		if (s[i] == '$' && (c != ' ' && c != '\0'))
+		if (s[i] == '$')
 		{
 			key = NULL;
+			var = NULL;
 			key = _realloc(key, 0, 2);
 			m = 0;
 			i++;
