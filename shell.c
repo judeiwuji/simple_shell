@@ -7,14 +7,13 @@
  *
  * Return: 0
  */
-int main(int argc, char **argv, char **env)
+int main(int argc, char **argv)
 {
 	char *str, *nocomments, *trimmed;
 	int mode = 1;
 	shell_var_t var = {0, 0, 0};
 
 	var.pid = getpid();
-	env = env;
 	while (mode)
 	{
 		str = NULL;
