@@ -11,7 +11,7 @@ char *_trim_left(char *str)
 	char *trimmed = NULL;
 	char c;
 	int i, j, start = 0;
-	int len;
+	int len = 0;
 
 	if (str == NULL)
 		return (NULL);
@@ -26,7 +26,7 @@ char *_trim_left(char *str)
 		{
 			len = _strlen(trimmed);
 			trimmed = _realloc(trimmed, len, len + 2);
-			if (trimmed)
+			if (trimmed != NULL)
 			{
 				trimmed[j++] = c;
 				trimmed[j] = '\0';
