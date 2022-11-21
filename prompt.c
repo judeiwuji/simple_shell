@@ -12,9 +12,10 @@ size_t prompt(char **str, int *mode)
 	size_t len = 0;
 	size_t status;
 
-	mode = mode;
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "$ ", 2);
+	else
+		*mode = 0;
 
 	status = getline(str, &len, stdin);
 	return (status);

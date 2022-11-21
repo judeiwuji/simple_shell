@@ -27,7 +27,6 @@ int main(int argc, char **argv)
 			if ((int)prompt(&str, &mode) == -1)
 				exit(var.code);
 		}
-
 		trimmed = _trim(str);
 		nocomments = removeComment(trimmed);
 		free(str);
