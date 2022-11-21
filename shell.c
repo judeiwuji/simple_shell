@@ -14,6 +14,7 @@ int main(int argc, char **argv)
 	shell_var_t var = {0, 0, 0};
 
 	var.pid = getpid();
+	/*signal(SIGINT, sigintHandler);*/
 	while (mode)
 	{
 		str = NULL;
@@ -25,8 +26,12 @@ int main(int argc, char **argv)
 		else
 		{
 			if ((int)prompt(&str, &mode) == -1)
+			{
+				free(str);
 				exit(var.code);
+			}
 		}
+
 		trimmed = _trim(str);
 		nocomments = removeComment(trimmed);
 		free(str);

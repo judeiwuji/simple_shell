@@ -77,4 +77,5 @@ int num_len(int num);
 char *replace_var(char *s, shell_var_t *svar);
 char *getVar(char *key, shell_var_t *svar);
 int processFile(char *filename, char **str);
+void sigintHandler(int sig_num);
 #endif
